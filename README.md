@@ -8,7 +8,8 @@ How to install
 5. Edit dropcheck-list.txt in your Dropbox folder and watch it magically turn into a checklist on your iPhone.
 6. Have fun!
 
-http://www.jakobloekkemadsen.com/
+Demo: http://dl.dropbox.com/u/2886688/web/DropCheck/dropcheck.htm
 
 Note for Windows users:
 You need to manually save the text file with UTF-8 encoding, if you use Notepad. Otherwise international characters will look funny ...
+
