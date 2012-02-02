@@ -17,13 +17,13 @@ Known issues
 Windows users need to manually save the .txt file with UTF-8 encoding in Notepad. 
 Otherwise international characters will look funny ...
 
-Demo link 
+Demo link
 ---------
 http://dl.dropbox.com/u/2886688/web/Dropcheck/Dropcheck/dropcheck.html
 
 
 TODOs / Ideas
-----
+-------------
 
 * Add indication that data is coming from localstorage - probably this should be presented near the "reset to Dropbox link"
 * Fix handling of international characters
