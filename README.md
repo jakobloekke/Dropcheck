@@ -20,7 +20,7 @@ Otherwise international characters will look funny ...
 
 Demo link 
 ---------
-http://dl.dropbox.com/u/2886688/web/Dropcheck/dropcheck.htm
+http://dl.dropbox.com/u/2886688/web/Dropcheck/Dropcheck/dropcheck.htm
 
 
 TODOs / Ideas
