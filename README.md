@@ -26,6 +26,11 @@ http://dl.dropbox.com/u/2886688/web/Dropcheck/dropcheck.htm
 TODOs / Ideas
 ----
 
-* Add indication of wether data is coming from localstorage - probably this should be presented near the "reset to Dropbox link"
+* Add indication that data is coming from localstorage - probably this should be presented near the "reset to Dropbox link"
 * Fix handling of international characters
 * Add handling of multiple lists
+
+Tech
+----
+Knockout.js
+CoffeeScript
