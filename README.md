@@ -1,7 +1,10 @@
+Dropcheck
+=========
+
 ![screenshot](http://www.jakobloekkemadsen.com/wp-content/uploads/2011/09/dropcheck1.png)
 
 How to install
-==============
+--------------
 1. Put the "DropCheck" folder in your Dropbox public folder.
 2. Right-click "dropcheck.htm" and get the Dropbox public link.
 3. Access the link through Safari on your iPhone.
