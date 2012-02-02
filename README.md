@@ -32,7 +32,4 @@ TODOs / Ideas
 Tech
 ----
 
-* Knockout.js
-* CoffeeScript
-* SCSS
-* Jade
+Knockout.js - CoffeeScript - SCSS - Jade
