@@ -25,7 +25,7 @@
 		<script type="text/javascript" src="dropcheck-lib/knockout.js"></script>
 		<script type="text/javascript" src="dropcheck-lib/dropcheck.js"></script>
 		
-		<script id='vareTemplate' type='text/html'>	
+		<script id='itemTemplate' type='text/html'>	
 			<tr data-bind="css: { bought: bought(), soldout: soldout() }">
 				<td class="checkbox"><input type="checkbox" data-bind="checked: bought, disable: soldout()" /></td>
 				<td>${ text }</td>
@@ -33,7 +33,7 @@
 			</tr>
 		</script>
 		
-		<script id='varelisteTemplate' type='text/html'>
+		<script id='itemlistTemplate' type='text/html'>
 			<table>
 				<thead>
 					<tr>
@@ -42,7 +42,7 @@
 						<th style="color:red">No</th>
 					</tr>
 				</thead>
-				<tbody data-bind="template: {name: 'vareTemplate', foreach: varer}"></tbody>
+				<tbody data-bind="template: {name: 'itemTemplate', foreach: items}"></tbody>
 				<tfoot>
 					<tr>
 						<th><a href="#" data-bind="click: sortByBought">Yes</a></th>
@@ -55,5 +55,5 @@
 		</script>
 
 	</head>
-	<body data-bind="template: 'varelisteTemplate'" />
+	<body data-bind="template: 'itemlistTemplate'" />
 </html>

@@ -7,8 +7,8 @@ $ ->
 
 
 
-# "Vare" class
-class Vare
+# "Item" class
+class Item
 	constructor: (@text, @bought=0, @soldout=0) ->
 	
 	observabled: ->
@@ -20,23 +20,20 @@ class Vare
 
 # The knockout viewModel
 viewModel = 
-	varer: ko.observableArray()
+	items: ko.observableArray()
 	
 	sortByBought: ->
-		this.varer.sort (a, b) -> 
+		this.items.sort (a, b) -> 
 			a.bought() < b.bought() ? -1 : 1
-        
 
 	sortBySoldout: ->
-		this.varer.sort (a, b) ->
+		this.items.sort (a, b) ->
 			a.soldout() < b.soldout() ? -1 : 1
-    
 
 	save: ->
 		for_storage = ko.toJSON(viewModel)
 		localStorage.setItem("viewModel", for_storage)
 
-	
 	reset: ->
 		localStorage.removeItem("viewModel")
 		location.reload()
@@ -46,14 +43,15 @@ viewModel =
 # If saved viewModel exists in localStorage, render that:
 savedViewModel = localStorage.getItem("viewModel")
 if savedViewModel
-	lines = JSON.parse(savedViewModel).varer
+	lines = JSON.parse(savedViewModel).items
 	
 	for line in lines
 		do (line) ->
-			vare = new Vare(line.text, line.bought, line.soldout)
-			viewModel.varer().push vare.observabled()
+			item = new Item(line.text, line.bought, line.soldout)
+			viewModel.items().push item.observabled()
 
 	$ -> ko.applyBindings viewModel
+
 
 
 # ... else initialize viewModel from Dropbox textfile
@@ -66,9 +64,7 @@ else
 			
 			for line in lines
 				do (line) ->
-					vare = new Vare line.toString()
-					viewModel.varer().push vare.observabled()
+					item = new Item( line.toString() )
+					viewModel.items().push item.observabled()
 
 			ko.applyBindings viewModel
-
-

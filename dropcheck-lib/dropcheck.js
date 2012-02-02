@@ -1,4 +1,4 @@
-var Vare, line, lines, savedViewModel, viewModel, _fn, _i, _len;
+var Item, line, lines, savedViewModel, viewModel, _fn, _i, _len;
 
 $(function() {
   return (function() {
@@ -7,15 +7,15 @@ $(function() {
   })();
 });
 
-Vare = (function() {
+Item = (function() {
 
-  function Vare(text, bought, soldout) {
+  function Item(text, bought, soldout) {
     this.text = text;
     this.bought = bought != null ? bought : 0;
     this.soldout = soldout != null ? soldout : 0;
   }
 
-  Vare.prototype.observabled = function() {
+  Item.prototype.observabled = function() {
     return {
       text: this.text,
       bought: ko.observable(this.bought),
@@ -23,14 +23,14 @@ Vare = (function() {
     };
   };
 
-  return Vare;
+  return Item;
 
 })();
 
 viewModel = {
-  varer: ko.observableArray(),
+  items: ko.observableArray(),
   sortByBought: function() {
-    return this.varer.sort(function(a, b) {
+    return this.items.sort(function(a, b) {
       var _ref;
       return (_ref = a.bought() < b.bought()) != null ? _ref : -{
         1: 1
@@ -38,7 +38,7 @@ viewModel = {
     });
   },
   sortBySoldout: function() {
-    return this.varer.sort(function(a, b) {
+    return this.items.sort(function(a, b) {
       var _ref;
       return (_ref = a.soldout() < b.soldout()) != null ? _ref : -{
         1: 1
@@ -59,11 +59,11 @@ viewModel = {
 savedViewModel = localStorage.getItem("viewModel");
 
 if (savedViewModel) {
-  lines = JSON.parse(savedViewModel).varer;
+  lines = JSON.parse(savedViewModel).items;
   _fn = function(line) {
-    var vare;
-    vare = new Vare(line.text, line.bought, line.soldout);
-    return viewModel.varer().push(vare.observabled());
+    var item;
+    item = new Item(line.text, line.bought, line.soldout);
+    return viewModel.items().push(item.observabled());
   };
   for (_i = 0, _len = lines.length; _i < _len; _i++) {
     line = lines[_i];
@@ -79,9 +79,9 @@ if (savedViewModel) {
       var line, _fn2, _j, _len2;
       lines = data.split("\n");
       _fn2 = function(line) {
-        var vare;
-        vare = new Vare(line.toString());
-        return viewModel.varer().push(vare.observabled());
+        var item;
+        item = new Item(line.toString());
+        return viewModel.items().push(item.observabled());
       };
       for (_j = 0, _len2 = lines.length; _j < _len2; _j++) {
         line = lines[_j];
