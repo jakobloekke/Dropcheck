@@ -31,5 +31,5 @@ TODOs / Ideas
 
 Tech
 ----
-Knockout.js
-CoffeeScript
+* Knockout.js
+* CoffeeScript
