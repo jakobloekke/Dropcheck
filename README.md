@@ -1,4 +1,5 @@
-How to install:
+How to install
+==============
 
 1. Put the "DropCheck" folder in your Dropbox public folder.
 2. Right-click "dropcheck.htm" and get the Dropboc public link.
