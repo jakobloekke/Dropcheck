@@ -23,12 +23,13 @@ viewModel =
 	items: ko.observableArray()
 	
 	sortByBought: ->
-		this.items.sort (a, b) -> 
-			a.bought() < b.bought() ? -1 : 1
+		#direction = if a.bought < b.bought then -1 else 1
+		this.items.sort (a, b) ->
+			if a.bought() < b.bought() then -1 else 1
 
 	sortBySoldout: ->
 		this.items.sort (a, b) ->
-			a.soldout() < b.soldout() ? -1 : 1
+			if a.soldout() < b.soldout() then -1 else 1
 
 	save: ->
 		for_storage = ko.toJSON(viewModel)
@@ -68,3 +69,11 @@ else
 					viewModel.items().push item.observabled()
 
 			ko.applyBindings viewModel
+
+
+
+linesToViewModel = (lines) -> 
+	for line in lines
+		do (line) ->
+			item = new Item( line.toString() )
+			viewModel.items().push item.observabled()

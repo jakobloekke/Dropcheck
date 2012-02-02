@@ -1,5 +1,5 @@
 (function() {
-  var Item, line, lines, savedViewModel, viewModel, _fn, _i, _len;
+  var Item, line, lines, linesToViewModel, savedViewModel, viewModel, _fn, _i, _len;
 
   $(function() {
     return (function() {
@@ -32,18 +32,20 @@
     items: ko.observableArray(),
     sortByBought: function() {
       return this.items.sort(function(a, b) {
-        var _ref;
-        return (_ref = a.bought() < b.bought()) != null ? _ref : -{
-          1: 1
-        };
+        if (a.bought() < b.bought()) {
+          return -1;
+        } else {
+          return 1;
+        }
       });
     },
     sortBySoldout: function() {
       return this.items.sort(function(a, b) {
-        var _ref;
-        return (_ref = a.soldout() < b.soldout()) != null ? _ref : -{
-          1: 1
-        };
+        if (a.soldout() < b.soldout()) {
+          return -1;
+        } else {
+          return 1;
+        }
       });
     },
     save: function() {
@@ -92,5 +94,19 @@
       }
     });
   }
+
+  linesToViewModel = function(lines) {
+    var line, _j, _len2, _results;
+    _results = [];
+    for (_j = 0, _len2 = lines.length; _j < _len2; _j++) {
+      line = lines[_j];
+      _results.push((function(line) {
+        var item;
+        item = new Item(line.toString());
+        return viewModel.items().push(item.observabled());
+      })(line));
+    }
+    return _results;
+  };
 
 }).call(this);
