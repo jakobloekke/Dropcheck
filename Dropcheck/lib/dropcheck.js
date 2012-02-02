@@ -1,5 +1,5 @@
 (function() {
-  var Item, line, lines, linesToViewModel, savedViewModel, viewModel, _fn, _i, _len;
+  var Item, line, lines, savedViewModel, viewModel, _fn, _i, _len;
 
   $(function() {
     return (function() {
@@ -94,19 +94,5 @@
       }
     });
   }
-
-  linesToViewModel = function(lines) {
-    var line, _j, _len2, _results;
-    _results = [];
-    for (_j = 0, _len2 = lines.length; _j < _len2; _j++) {
-      line = lines[_j];
-      _results.push((function(line) {
-        var item;
-        item = new Item(line.toString());
-        return viewModel.items().push(item.observabled());
-      })(line));
-    }
-    return _results;
-  };
 
 }).call(this);

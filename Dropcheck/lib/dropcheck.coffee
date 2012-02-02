@@ -69,11 +69,3 @@ else
 					viewModel.items().push item.observabled()
 
 			ko.applyBindings viewModel
-
-
-
-linesToViewModel = (lines) -> 
-	for line in lines
-		do (line) ->
-			item = new Item( line.toString() )
-			viewModel.items().push item.observabled()
