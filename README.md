@@ -1,8 +1,7 @@
 Dropcheck
 =========
 
-Dropcheck is a web app that runs out of your Dropbox public folder.
-
+Dropcheck is a **web app** that runs out of your **Dropbox**.
 It turns a simple .txt file into a mobile checklist.
 
 ![screenshot](http://www.jakobloekkemadsen.com/wp-content/uploads/2011/09/dropcheck1.png)
@@ -10,7 +9,7 @@ It turns a simple .txt file into a mobile checklist.
 How to install
 --------------
 1. [Download](https://github.com/jakobloekke/Dropcheck/zipball/master/ "Download Dropcheck") and put the "Dropcheck" folder in your Dropbox public folder.
-3. Access the public link of "dropcheck.htm" through mobile Safari.
+3. Access the public link of "dropcheck.html" through mobile Safari.
 4. Bookmark the page to your iPhone homescreen.
 
 Known issues
@@ -32,5 +31,6 @@ TODOs / Ideas
 
 Tech
 ----
-Knockout.js
-CoffeeScript
+* Knockout.js
+* CoffeeScript
+* SCSS

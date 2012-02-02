@@ -1,0 +1,48 @@
+!!! 5
+html(lang="en")
+	head
+		meta(http-equiv='Content-Type', content='text/html', charset='utf-8')
+		meta(name='author', content='Jakob Løkke Madsen')
+		meta(name='HandheldFriendly', content='True')
+		meta(name='MobileOptimized', content='320')
+		meta(name='viewport', content='width=device-width, initial-scale=1.0')
+		meta(name='apple-mobile-web-app-capable', content='yes')
+		meta(name='apple-mobile-web-app-status-bar-style', content='black')
+		
+		link(rel='apple-touch-icon', content='lib/logo.png')
+		link(rel='apple-touch-startup-image', content='lib/splash.png')
+		link(rel='stylesheet', href='lib/style.css', type='text/css', media='all', charset='utf-8')
+		
+		title Dropcheck
+
+	body
+		table
+			thead
+				tr
+					th(style='color: green') Yes
+					th
+					th(style='color: green') No
+			
+			tbody
+				// ko foreach: items 
+				tr(data-bind='css: { bought: bought(), soldout: soldout() }')
+					td.checkbox
+						input(type='checkbox', data-bind='checked: bought, disable: soldout()')
+					td(data-bind='text: text')
+					td.checkbox
+						input(type='checkbox', data-bind='checked: soldout, disable: bought()')
+				// /ko
+			
+			tfoot
+				tr
+					th
+						a(href='#', data-bind='click: sortByBought') Yes
+					th &larr; Click to move checked to bottom &rarr;
+					th
+						a(href='#', data-bind='click: sortBySoldout') No
+	
+		a#reset(href='#', data-bind='click: reset') Reset to Dropbox file
+
+		script(type='text/javascript', src='lib/jquery.js')
+		script(type='text/javascript', src='lib/knockout.js')
+		script(type='text/javascript', src='lib/dropcheck.js')
