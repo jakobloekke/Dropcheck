@@ -19,7 +19,8 @@ table {
         display: block;
         color: maroon; }
 
-.bought, .soldout {
+.bought,
+.soldout {
   color: white; }
 
 .bought {
@@ -28,14 +29,21 @@ table {
 .soldout {
   background-color: red; }
 
+.yes {
+  color: green; }
+
+.no {
+  color: red; }
+
 .checkbox {
   width: 1px;
+  /* Should be as narrow as possible */
   text-align: center; }
 
 input {
   padding: 1.5em; }
 
-#reset, #mail {
+.reset {
   display: block;
   margin: 2em 0;
   text-align: center; }
