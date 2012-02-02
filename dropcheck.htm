@@ -23,69 +23,7 @@
 		<script type="text/javascript" src="dropcheck-lib/jquery.js"></script>
 		<script type="text/javascript" src="dropcheck-lib/jquery.tmpl.js"></script>
 		<script type="text/javascript" src="dropcheck-lib/knockout.js"></script>
-		<script type="text/javascript" charset="utf-8">
-
-			// "Vare" class
-			var vare = function(bought, text, soldout) {
-				this.bought = ko.observable(bought);
-				this.text = text;
-				this.soldout = ko.observable(soldout);
-			};
-
-			// Declare viewModel
-			var viewModel = {
-				varer: ko.observableArray(),
-				sortByBought: function() {
-					this.varer.sort(function (a, b) {
-						return a.bought() < b.bought() ? -1 : 1;
-			        });
-			    },
-				sortBySoldout: function() {
-					this.varer.sort(function (a, b) {
-						return a.soldout() < b.soldout() ? -1 : 1;
-			        });
-			    },
-				save: function() {
-					var forStorage = ko.toJSON(viewModel);
-					localStorage.setItem("viewModel", forStorage);
-				},
-				reset: function() {
-					localStorage.removeItem("viewModel");
-					location.reload();
-				}
-			};
-			
-			//If saved viewModel exists in localStorage, render that:
-			var savedViewModel = localStorage.getItem("viewModel");
-			if (savedViewModel) 
-			{	
-				$( JSON.parse(savedViewModel).varer ).each(function(){
-					viewModel.varer().push(
-						new vare(this.bought, this.text, this.soldout)
-					) 
-				});
-				$(function(){
-					ko.applyBindings(viewModel);
-				});
-			}
-			
-			// ... else initialize viewModel from Dropbox textfile
-			else 
-			{	
-				$.ajax("dropcheck-list.txt", {
-					dataType: "text",
-					success: function(data){
-						var lines = data.split("\n");
-						$(lines).each(function(){ 
-							viewModel.varer().push(
-								new vare(0, this.toString(), 0)
-							) 
-						});
-						ko.applyBindings(viewModel);
-					}
-				})
-			}
-		</script>
+		<script type="text/javascript" src="dropcheck-lib/dropcheck.js"></script>
 		
 		<script id='vareTemplate' type='text/html'>	
 			<tr data-bind="css: { bought: bought(), soldout: soldout() }">
