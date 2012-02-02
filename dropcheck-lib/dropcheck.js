@@ -1,10 +1,31 @@
-var savedViewModel, vare, viewModel;
+var Vare, line, lines, savedViewModel, viewModel, _fn, _i, _len;
 
-vare = function(bought, text, soldout) {
-  this.bought = ko.observable(bought);
-  this.text = text;
-  return this.soldout = ko.observable(soldout);
-};
+$(function() {
+  return (function() {
+    viewModel.save();
+    return setTimeout(arguments.callee, 10 * 1000);
+  })();
+});
+
+Vare = (function() {
+
+  function Vare(text, bought, soldout) {
+    this.text = text;
+    this.bought = bought != null ? bought : 0;
+    this.soldout = soldout != null ? soldout : 0;
+  }
+
+  Vare.prototype.observabled = function() {
+    return {
+      text: this.text,
+      bought: ko.observable(this.bought),
+      soldout: ko.observable(this.soldout)
+    };
+  };
+
+  return Vare;
+
+})();
 
 viewModel = {
   varer: ko.observableArray(),
@@ -25,9 +46,9 @@ viewModel = {
     });
   },
   save: function() {
-    var forStorage;
-    forStorage = ko.toJSON(viewModel);
-    return localStorage.setItem("viewModel", forStorage);
+    var for_storage;
+    for_storage = ko.toJSON(viewModel);
+    return localStorage.setItem("viewModel", for_storage);
   },
   reset: function() {
     localStorage.removeItem("viewModel");
@@ -38,9 +59,16 @@ viewModel = {
 savedViewModel = localStorage.getItem("viewModel");
 
 if (savedViewModel) {
-  $(JSON.parse(savedViewModel).varer.each(function() {
-    return viewModel.varer().push(new vare(this.bought, this.text, this.soldout));
-  }));
+  lines = JSON.parse(savedViewModel).varer;
+  _fn = function(line) {
+    var vare;
+    vare = new Vare(line.text, line.bought, line.soldout);
+    return viewModel.varer().push(vare.observabled());
+  };
+  for (_i = 0, _len = lines.length; _i < _len; _i++) {
+    line = lines[_i];
+    _fn(line);
+  }
   $(function() {
     return ko.applyBindings(viewModel);
   });
@@ -48,10 +76,17 @@ if (savedViewModel) {
   $.ajax("dropcheck-list.txt", {
     dataType: "text",
     success: function(data) {
-      var lines;
+      var line, _fn2, _j, _len2;
       lines = data.split("\n");
-      $(lines.each(function() {}));
-      viewModel.varer().push(new vare(0, this.toString(), 0));
+      _fn2 = function(line) {
+        var vare;
+        vare = new Vare(line.toString());
+        return viewModel.varer().push(vare.observabled());
+      };
+      for (_j = 0, _len2 = lines.length; _j < _len2; _j++) {
+        line = lines[_j];
+        _fn2(line);
+      }
       return ko.applyBindings(viewModel);
     }
   });

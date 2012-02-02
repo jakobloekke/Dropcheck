@@ -1,28 +1,40 @@
+#Autosave function that runs every 10 seconds:
+$ ->
+	(->
+	    viewModel.save();
+	    setTimeout(arguments.callee, 10*1000);
+	)();
+
+
 
 # "Vare" class
-vare = (bought, text, soldout) ->
-	this.bought = ko.observable(bought)
-	this.text = text
-	this.soldout = ko.observable(soldout)
+class Vare
+	constructor: (@text, @bought=0, @soldout=0) ->
+	
+	observabled: ->
+		text: @text
+		bought: ko.observable @bought
+		soldout: ko.observable @soldout
 
 
-# Declare viewModel
+
+# The knockout viewModel
 viewModel = 
 	varer: ko.observableArray()
 	
 	sortByBought: ->
 		this.varer.sort (a, b) -> 
-			return a.bought() < b.bought() ? -1 : 1
+			a.bought() < b.bought() ? -1 : 1
         
 
 	sortBySoldout: ->
 		this.varer.sort (a, b) ->
-			return a.soldout() < b.soldout() ? -1 : 1
+			a.soldout() < b.soldout() ? -1 : 1
     
 
 	save: ->
-		forStorage = ko.toJSON(viewModel)
-		localStorage.setItem("viewModel", forStorage)
+		for_storage = ko.toJSON(viewModel)
+		localStorage.setItem("viewModel", for_storage)
 
 	
 	reset: ->
@@ -32,16 +44,16 @@ viewModel =
 
 
 # If saved viewModel exists in localStorage, render that:
-savedViewModel = localStorage.getItem("viewModel");
+savedViewModel = localStorage.getItem("viewModel")
 if savedViewModel
-	$ JSON.parse(savedViewModel).varer 
-		.each ->
-			viewModel.varer().push(
-				new vare(this.bought, this.text, this.soldout)
-			) 
+	lines = JSON.parse(savedViewModel).varer
 	
-	$ ->
-		ko.applyBindings(viewModel);
+	for line in lines
+		do (line) ->
+			vare = new Vare(line.text, line.bought, line.soldout)
+			viewModel.varer().push vare.observabled()
+
+	$ -> ko.applyBindings viewModel
 
 
 # ... else initialize viewModel from Dropbox textfile
@@ -49,14 +61,14 @@ else
 	$.ajax "dropcheck-list.txt"
 		dataType: "text"
 		success: (data) ->
+			
 			lines = data.split "\n"
 			
-			$ lines
-				.each ->
-				viewModel.varer().push(
-					new vare(0, this.toString(), 0)
-				) 
+			for line in lines
+				do (line) ->
+					vare = new Vare line.toString()
+					viewModel.varer().push vare.observabled()
 
-			ko.applyBindings(viewModel);
+			ko.applyBindings viewModel
 
 

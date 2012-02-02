@@ -53,16 +53,7 @@
 			</table>
 			<a id="reset" href="#" data-bind="click: reset">Reset to Dropbox file</a>
 		</script>
-		
-		<script type="text/javascript">
-			//Autosave viewmodel:
-			$(function(){
-				(function(){
-				    viewModel.save();
-				    setTimeout(arguments.callee, 10000);
-				})();
-			})
-		</script>
+
 	</head>
 	<body data-bind="template: 'varelisteTemplate'" />
 </html>
