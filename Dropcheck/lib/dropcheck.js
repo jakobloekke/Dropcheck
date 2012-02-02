@@ -51,15 +51,15 @@
     save: function() {
       var for_storage;
       for_storage = ko.toJSON(viewModel);
-      return localStorage.setItem("viewModel", for_storage);
+      return localStorage.setItem("Dropcheck", for_storage);
     },
     reset: function() {
-      localStorage.removeItem("viewModel");
+      localStorage.removeItem("Dropcheck");
       return location.reload();
     }
   };
 
-  savedViewModel = localStorage.getItem("viewModel");
+  savedViewModel = localStorage.getItem("Dropcheck");
 
   if (savedViewModel) {
     lines = JSON.parse(savedViewModel).items;

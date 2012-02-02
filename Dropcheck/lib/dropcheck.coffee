@@ -33,16 +33,16 @@ viewModel =
 
 	save: ->
 		for_storage = ko.toJSON(viewModel)
-		localStorage.setItem("viewModel", for_storage)
+		localStorage.setItem("Dropcheck", for_storage)
 
 	reset: ->
-		localStorage.removeItem("viewModel")
+		localStorage.removeItem("Dropcheck")
 		location.reload()
 
 
 
 # If saved viewModel exists in localStorage, render that:
-savedViewModel = localStorage.getItem("viewModel")
+savedViewModel = localStorage.getItem("Dropcheck")
 if savedViewModel
 	lines = JSON.parse(savedViewModel).items
 	
