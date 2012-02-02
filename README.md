@@ -34,3 +34,4 @@ Tech
 * Knockout.js
 * CoffeeScript
 * SCSS
+* Jade
