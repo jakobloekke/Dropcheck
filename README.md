@@ -9,7 +9,7 @@ It turns a simple .txt file into a mobile checklist.
 
 How to install
 --------------
-1. Put the "Dropcheck" folder in your Dropbox public folder.
+1. [Download](https://github.com/jakobloekke/Dropcheck/zipball/master/ "Download Dropcheck") and put the "Dropcheck" folder in your Dropbox public folder.
 3. Access the public link of "dropcheck.htm" through mobile Safari.
 4. Bookmark the page to your iPhone homescreen.
 
