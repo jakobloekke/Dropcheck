@@ -56,7 +56,7 @@ if savedViewModel
 
 # ... else initialize viewModel from Dropbox textfile
 else 
-	$.ajax "dropcheck-list.txt"
+	$.ajax "list.txt"
 		dataType: "text"
 		success: (data) ->
 			

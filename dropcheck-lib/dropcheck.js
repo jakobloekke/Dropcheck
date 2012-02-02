@@ -73,7 +73,7 @@ if (savedViewModel) {
     return ko.applyBindings(viewModel);
   });
 } else {
-  $.ajax("dropcheck-list.txt", {
+  $.ajax("list.txt", {
     dataType: "text",
     success: function(data) {
       var line, _fn2, _j, _len2;
