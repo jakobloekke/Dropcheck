@@ -2,6 +2,7 @@ Dropcheck
 =========
 
 Dropcheck is a web app that runs out of your Dropbox public folder.
+
 It turns a simple .txt file into a mobile checklist.
 
 ![screenshot](http://www.jakobloekkemadsen.com/wp-content/uploads/2011/09/dropcheck1.png)
@@ -12,8 +13,11 @@ How to install
 3. Access the public link of "dropcheck.htm" through mobile Safari.
 4. Bookmark the page to your homescreen.
 
-**Note for Windows users:**
-You need to manually save the text file with UTF-8 encoding, if you use Notepad. Otherwise international characters will look funny ...
+Known issues
+------------
+Windows users need to manually save the .txt file with UTF-8 encoding in Notepad. 
+
+Otherwise international characters will look funny ...
 
 Demo link 
 ---------
