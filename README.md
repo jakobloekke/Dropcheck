@@ -1,8 +1,7 @@
 Dropcheck
 =========
 
-Dropcheck is a web app that runs out of your Dropbox public folder.
-
+Dropcheck is a **web app** that runs out of your **Dropbox**.
 It turns a simple .txt file into a mobile checklist.
 
 ![screenshot](http://www.jakobloekkemadsen.com/wp-content/uploads/2011/09/dropcheck1.png)
