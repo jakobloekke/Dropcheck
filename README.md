@@ -11,7 +11,7 @@ How to install
 --------------
 1. Put the "Dropcheck" folder in your Dropbox public folder.
 3. Access the public link of "dropcheck.htm" through mobile Safari.
-4. Bookmark the page to your homescreen.
+4. Bookmark the page to your iPhone homescreen.
 
 Known issues
 ------------
