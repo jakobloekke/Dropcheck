@@ -33,3 +33,4 @@ Tech
 ----
 * Knockout.js
 * CoffeeScript
+* SCSS
