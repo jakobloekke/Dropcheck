@@ -31,6 +31,7 @@ TODOs / Ideas
 
 Tech
 ----
+
 * Knockout.js
 * CoffeeScript
 * SCSS
