@@ -23,7 +23,6 @@ viewModel =
 	items: ko.observableArray()
 	
 	sortByBought: ->
-		#direction = if a.bought < b.bought then -1 else 1
 		this.items.sort (a, b) ->
 			if a.bought() < b.bought() then -1 else 1
 
